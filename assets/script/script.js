@@ -104,6 +104,21 @@ function nextQuestion() {
 	displayQuestion()
 }
 
+function gameOver(event) {
+	if (timer == 0){
+	var messageElement = document.querySelector('message');
+	messageElement.innerHTML = 'Time is up!'
+}	else {
+	nextQuestion = 
+
+
+}
+}
+
+
+
+
+
 window.onload = function () {
 
 //         timer = new CountDownTimer(59),
