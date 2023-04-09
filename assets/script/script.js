@@ -1,17 +1,21 @@
-var timer = 0
-var interval
-var display = document.querySelector('#time')
-var questionElement = document.querySelector('#question')
-var buttonA = document.querySelector('#A')
-var buttonB = document.querySelector('#B')
-var buttonC = document.querySelector('#C')
-var buttonD = document.querySelector('#D')
-var index = 0
-var score = 0
+var timer = 0;
+var interval;
+var display = document.querySelector('#time');
+var questionElement = document.querySelector('#question');
+var buttonA = document.querySelector('#A');
+var buttonB = document.querySelector('#B');
+var buttonC = document.querySelector('#C');
+var buttonD = document.querySelector('#D');
+var index = 0;
+var score = 0;
+const enterNameForm = document.getElementById("enterName-form");
+const enterNameInput = document.getElementById("enterName-input");
+const enterNameSubmit = document.getElementById("enterName-submit");
+const enterNames = document.getElementById("enterNames");
 
-document.querySelector(myQuestions)
+document.querySelector(myQuestions);
 
-//* Quiz Questions*//
+//* Quiz Questions*// 
 
 
 var myQuestions = [
@@ -66,57 +70,89 @@ var myQuestions = [
 //* Timer *//
 
 function displayTimer() {
-	display.textContent = timer
+	display.textContent = timer;
 	if (timer <= 0) {
-		clearInterval(interval)
+		gameOver();
 	}
 }
 
 function CountDownTimer() {
-	timer = 60
+	timer = 60;
 	interval = setInterval(function() { 
-		timer--
-		displayTimer()
-	},1000)
+		timer--;
+		displayTimer();
+	},1000);
 }
 
 function displayQuestion() {
-	questionElement.textContent = myQuestions[index].question
-	buttonA.textContent = myQuestions[index].answers.a
-	buttonB.textContent = myQuestions[index].answers.b
-	buttonC.textContent = myQuestions[index].answers.c
-	buttonD.textContent = myQuestions[index].answers.d
+	questionElement.textContent = myQuestions[index].question;
+	buttonA.textContent = myQuestions[index].answers.a;
+	buttonB.textContent = myQuestions[index].answers.b;
+	buttonC.textContent = myQuestions[index].answers.c;
+	buttonD.textContent = myQuestions[index].answers.d;
 
 }
 
 function answer(event) {
 	if (event.target.answer === myQuestions[index].correctAnswer){
-		score ++
-		nextQuestion()
+		score ++;
+		nextQuestion();
 	} else { 
-		timer -= 5
-		nextQuestion()
+		timer -= 5;
+		nextQuestion();
 	}
 }
 function nextQuestion() {
-	console.log('thisworks')
-	index ++
-	displayQuestion()
+	console.log('thisworks');
+	if (index === myQuestions.length - 1) {
+		gameOver();
+	} else {
+		index ++;
+		displayQuestion();
+	}
+	console.log(index);
 }
+
+
+
 
 function gameOver(event) {
-	if (timer == 0){
-	var messageElement = document.querySelector('message');
-	messageElement.innerHTML = 'Time is up!'
-}	else {
-	nextQuestion = 
-
-
-}
+	clearInterval(interval);
+	var messageElement = document.querySelector('#message');
+	messageElement.innerHTML = 'Time is up!' + " " + "Your score:" + " " + score;
+	//var myQuestions = document.querySelector('#hide');
 }
 
 
+let enterNamesStorage = localStorage.getItem("enterNames")? JSON.parse(localStorage.getItem("enterNames"))
+  : [];
 
+  enterNameForm.addEventListener("submit", (e) => {
+	e.preventDefault();
+	enterNamesStorage.push(enterNameInput.value);
+	localStorage.setItem("enterNames", JSON.stringify(enterNamesStorage));
+	listBuilder(enterNameInput.value);
+	enterNameInput.value = "";
+  });
+
+  const listBuilder = (text) => {
+	const enterName = document.createElement("li");
+	enterName.innerHTML = text + " " + score +  " " +' <button onclick="deleteenterName(this)">x</button>';
+	enterNames.appendChild(enterName);
+  };
+
+  const getenterNames = JSON.parse(localStorage.getItem("enterNames"));
+	getenterNames.forEach((enterName) => {
+  listBuilder(enterName) + score;
+});
+
+const deleteenterName = (btn) => {
+	let el = btn.parentNode;
+	const index = [...el.parentElement.children].indexOf(el);
+	enterNamesStorage.splice(index, 1);
+	localStorage.setItem("enterNames", JSON.stringify(enterNamesStorage));
+	el.remove();
+  };
 
 
 window.onload = function () {
@@ -129,17 +165,17 @@ window.onload = function () {
 //   timer.onTick(format); 
     
 	buttonA.addEventListener('click', function (event){
-		answer(event)
-	} )     
+		answer(event);
+	} );     
 	buttonB.addEventListener('click', function (event){
-		answer(event)
-	} )   
+		answer(event);
+	} );   
 	buttonC.addEventListener('click', function (event){
-		answer(event)
-	} )   
+		answer(event);
+	} );   
 	buttonD.addEventListener('click', function (event){
-		answer(event)
-	} )   
+		answer(event);
+	} );   
 	document.querySelector('button').addEventListener('click', function () {
         CountDownTimer();
 		displayQuestion();
