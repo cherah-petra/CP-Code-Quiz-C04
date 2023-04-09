@@ -95,7 +95,7 @@ function displayQuestion() {
 
 function answer(event) {
 	if (event.target.answer === myQuestions[index].correctAnswer){
-		score ++;
+		score =+ 5;
 		nextQuestion();
 	} else { 
 		timer -= 5;
@@ -141,10 +141,11 @@ let enterNamesStorage = localStorage.getItem("enterNames")? JSON.parse(localStor
 	enterNames.appendChild(enterName);
   };
 
-  const getenterNames = JSON.parse(localStorage.getItem("enterNames"));
-	getenterNames.forEach((enterName) => {
-  listBuilder(enterName) + score;
-});
+  function getenterNames(event) {
+	if (enterNames !=="") {
+		enterNames();
+	} 
+}
 
 const deleteenterName = (btn) => {
 	let el = btn.parentNode;
