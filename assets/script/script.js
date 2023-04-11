@@ -82,6 +82,7 @@ function CountDownTimer() {
 		timer--;
 		displayTimer();
 	},1000);
+
 }
 
 function displayQuestion() {
@@ -93,15 +94,23 @@ function displayQuestion() {
 
 }
 
+
 function answer(event) {
-	if (event.target.answer === myQuestions[index].correctAnswer){
-		score =+ 5;
-		nextQuestion();
-	} else { 
-		timer -= 5;
-		nextQuestion();
-	}
-}
+	if (
+	   event.target.getAttribute('data-answer') === myQuestions[index].correctAnswer
+ ) {
+ 		score += 1;
+ 		console.log (score);
+ 		nextQuestion();
+		message.textContent ='Good job!';
+ } else {
+ 		timer -= 5;
+		message.textContent ='Wrong answer!';
+ 		nextQuestion();
+
+ }
+ } 
+
 function nextQuestion() {
 	console.log('thisworks');
 	if (index === myQuestions.length - 1) {
@@ -113,14 +122,21 @@ function nextQuestion() {
 	console.log(index);
 }
 
-
-
+function showScore() {
+	var x = document.getElementById("enterName-form");
+	if (x.style.display === "none") {
+	  x.style.display = "block";
+	} else {
+	  x.style.display = "none";
+	}
+  }
 
 function gameOver(event) {
 	clearInterval(interval);
 	var messageElement = document.querySelector('#message');
 	messageElement.innerHTML = 'Time is up!' + " " + "Your score:" + " " + score;
-	//var myQuestions = document.querySelector('#hide');
+	document.getElementById("questionElement").style.display = "none";  
+
 }
 
 

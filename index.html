@@ -7,22 +7,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Code Quiz!</title>
     <link rel="stylesheet" href="./assets/style/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
 
+    <main>
+
+        <div class="topcontainer">
+            <div class="timer">Time: <span id="time"></span></div>
+                <div id="topscores"><a href="#">View Scores</a></div>
+        
+        </div>
+
 <div id="quiz">
-   <p>Time's up in <span id="time"></span> seconds!</p>
+
+ 
 
    <div id="hide">
-   <button>Start</button>
+   <button class="start" id="start" onclick="displayQuestion">Start</button>
+
 
    <div id="question"></div>
 
    <div id="answer">
-    <button id="A" data-answer="A"></button>
-    <button id="B" data-answer="B"></button>
-    <button id="C" data-answer="C"></button>
-    <button id="D" data-answer="D"></button>
+    <button id="A" data-answer="a" class="clickanswers"></button>
+    <button id="B" data-answer="b" class="clickanswers"></button>
+    <button id="C" data-answer="c" class="clickanswers"></button>
+    <button id="D" data-answer="d" class="clickanswers"></button>
    </div>
 </div>
 
@@ -35,7 +48,7 @@
     <button id="enterName-submit">save</button>
   </form>
   <ul id="enterNames"></ul>
-
+</main>
 <script src="./assets/script/script.js"></script>
 
 </body>
