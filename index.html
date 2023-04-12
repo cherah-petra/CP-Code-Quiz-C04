@@ -17,7 +17,7 @@
 
         <div class="topcontainer">
             <div class="timer">Time: <span id="time"></span></div>
-                <div id="topscores"><a href="#">View Scores</a></div>
+                <div id="topscores"><a href="#showScore">View Scores</a></div>
         
         </div>
 
@@ -37,17 +37,25 @@
     <button id="C" data-answer="c" class="clickanswers"></button>
     <button id="D" data-answer="d" class="clickanswers"></button>
    </div>
-</div>
 
 <div id="message"></div>
 
+</div>
+</div>
 
 
+<section id="saveyourscore">
+<h2>Enter your initials to save your score.</h2>
 <form id="enterName-form">
     <input id="enterName-input" type="text" placeholder="add your initials" required />
     <button id="enterName-submit">save</button>
   </form>
+  <h3>Top Scores</h3>
   <ul id="enterNames"></ul>
+  <ul id="#showScore"></ul>
+</section>
+
+
 </main>
 <script src="./assets/script/script.js"></script>
 </body>

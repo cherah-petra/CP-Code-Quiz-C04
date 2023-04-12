@@ -1,5 +1,6 @@
 var timer = 0;
 var interval;
+var document;
 var display = document.querySelector('#time');
 var questionElement = document.querySelector('#question');
 var buttonA = document.querySelector('#A');
@@ -135,7 +136,8 @@ function gameOver(event) {
 	clearInterval(interval);
 	var messageElement = document.querySelector('#message');
 	messageElement.innerHTML = 'Time is up!' + " " + "Your score:" + " " + score;
-	document.getElementById("questionElement").style.display = "none";  
+	document.getElementById("quiz").style.display = "none";
+
 
 }
 
