@@ -101,3 +101,11 @@ main {
 #submit:hover{
 	background-color: #3a8;
 }
+
+#saveyourscore {
+	display: none;
+}
+
+#scoreList {
+	display: none;
+}

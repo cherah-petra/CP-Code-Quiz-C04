@@ -17,7 +17,11 @@
 
         <div class="topcontainer">
             <div class="timer">Time: <span id="time"></span></div>
-                <div id="topscores"><a href="#showScore">View Scores</a></div>
+                <div id="topscores">
+                    <a id="scores" title="Click to view scores"
+ href="#" onclick="scoreList();return false;">link text</a>
+                    
+</div>
         
         </div>
 
@@ -50,11 +54,18 @@
     <input id="enterName-input" type="text" placeholder="add your initials" required />
     <button id="enterName-submit">save</button>
   </form>
+</section>
+
+
+<section id="scoreList">
   <h3>Top Scores</h3>
   <ul id="enterNames"></ul>
   <ul id="#showScore"></ul>
 </section>
 
+ <section id="reload"> 
+<input type="button" value="Reload Page" onClick="window.location.reload(true)">
+</section>
 
 </main>
 <script src="./assets/script/script.js"></script>
