@@ -9,12 +9,20 @@ var buttonC = document.querySelector('#C');
 var buttonD = document.querySelector('#D');
 var index = 0;
 var score = 0;
+var tryagain;
+var saveyourscore;
+var scoreList;
 const enterNameForm = document.getElementById("enterName-form");
 const enterNameInput = document.getElementById("enterName-input");
 const enterNameSubmit = document.getElementById("enterName-submit");
 const enterNames = document.getElementById("enterNames");
 
 document.querySelector(myQuestions);
+
+var newUser = {
+	user: enterNameInput.value,
+	score: score
+}
 
 //* Quiz Questions*// 
 
@@ -137,17 +145,23 @@ function gameOver(event) {
 	var messageElement = document.querySelector('#message');
 	messageElement.innerHTML = 'Time is up!' + " " + "Your score:" + " " + score;
 	document.getElementById("quiz").style.display = "none";
-
+	document.getElementById("saveyourscore").style.visibility = "visible";
+	document.getElementById("showScore").style.visibility = "visible";
 
 }
 
+
+
+function tryagain() {
+	window.location.refresh();
+  }
 
 let enterNamesStorage = localStorage.getItem("enterNames")? JSON.parse(localStorage.getItem("enterNames"))
   : [];
 
   enterNameForm.addEventListener("submit", (e) => {
 	e.preventDefault();
-	enterNamesStorage.push(enterNameInput.value);
+	enterNamesStorage.push(newUser);
 	localStorage.setItem("enterNames", JSON.stringify(enterNamesStorage));
 	listBuilder(enterNameInput.value);
 	enterNameInput.value = "";
