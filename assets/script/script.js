@@ -19,10 +19,7 @@ const enterNames = document.getElementById("enterNames");
 
 document.querySelector(myQuestions);
 
-var newUser = {
-	user: enterNameInput.value,
-	score: score
-}
+
 
 //* Quiz Questions*// 
 
@@ -166,11 +163,19 @@ let enterNamesStorage = localStorage.getItem("enterNames")? JSON.parse(localStor
 
   enterNameForm.addEventListener("submit", (e) => {
 	e.preventDefault();
+	var newUser = {
+		user: enterNameInput.value,
+		score: score
+	}
 	enterNamesStorage.push(newUser);
 	localStorage.setItem("enterNames", JSON.stringify(enterNamesStorage));
 	listBuilder(enterNameInput.value);
 	enterNameInput.value = "";
-  });
+
+  }
+  );
+
+
 
   const listBuilder = (text) => {
 	const enterName = document.createElement("li");
