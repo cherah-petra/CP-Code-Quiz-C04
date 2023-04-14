@@ -131,6 +131,17 @@ function nextQuestion() {
 	console.log(index);
 }
 
+
+
+function gameOver(event) {
+	clearInterval(interval);
+	var messageElement = document.querySelector('#message');
+	messageElement.innerHTML = 'Time is up!' + " " + "Your score:" + " " + score;
+	document.getElementById("quiz").style.display = "none";
+	document.getElementById("saveyourscore").style.display = "block";
+
+}
+
 function showScore() {
 	var x = document.getElementById("enterName-form");
 	if (x.style.display === "none") {
@@ -140,17 +151,11 @@ function showScore() {
 	}
   }
 
-function gameOver(event) {
-	clearInterval(interval);
-	var messageElement = document.querySelector('#message');
-	messageElement.innerHTML = 'Time is up!' + " " + "Your score:" + " " + score;
-	document.getElementById("quiz").style.display = "none";
-	document.getElementById("saveyourscore").style.visibility = "visible";
-	document.getElementById("showScore").style.visibility = "visible";
+function scoreList() {
+	document.getElementById("scoreList").style.display = "block";
+	document.getElementById("showScore").style.display = "block";
 
 }
-
-
 
 function tryagain() {
 	window.location.refresh();
@@ -187,7 +192,7 @@ const deleteenterName = (btn) => {
 	el.remove();
   };
 
-
+  
 window.onload = function () {
 
 //         timer = new CountDownTimer(59),
