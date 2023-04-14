@@ -104,8 +104,10 @@ main {
 
 #saveyourscore {
 	display: none;
+	margin: 20px;
 }
 
 #scoreList {
 	display: none;
 }
+
