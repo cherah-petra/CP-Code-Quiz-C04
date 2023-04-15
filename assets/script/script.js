@@ -170,7 +170,7 @@ let enterNamesStorage = localStorage.getItem("enterNames")? JSON.parse(localStor
 	e.preventDefault();
 	var newUser = {
 		user: enterNameInput.value,
-		score: score;
+		score: score,
 	}
 
 	enterNamesStorage.push(newUser);
