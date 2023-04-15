@@ -22,7 +22,7 @@ File can used and shared to create more test javascript knowledge or expand upon
 ## License
 
 - GitHub repository URL: https://github.com/cherah-petra/Challenge-03-JS-Password-Generator
-- GitHub Page: 
+- GitHub Page: https://cherah-petra.github.io/CP-Code-Quiz-C04/
 - License: license.txt
 
 
