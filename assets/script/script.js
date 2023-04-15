@@ -91,6 +91,8 @@ function CountDownTimer() {
 
 }
 
+//* Quiz Functions *//
+
 function displayQuestion() {
 	questionElement.textContent = myQuestions[index].question;
 	buttonA.textContent = myQuestions[index].answers.a;
@@ -128,7 +130,7 @@ function nextQuestion() {
 	console.log(index);
 }
 
-
+//* Post Quiz
 
 function gameOver(event) {
 	clearInterval(interval);
@@ -145,12 +147,15 @@ function showScore() {
 	  x.style.display = "block";
 	} else {
 	  x.style.display = "none";
-	}
+	}  
   }
 
 function scoreList() {
 	document.getElementById("scoreList").style.display = "block";
 	document.getElementById("showScore").style.display = "block";
+	for (var i = 0; i < enterNamesStorage.length; i++) {
+        listBuilder(enterNamesStorage[i].user);
+    }
 
 }
 
@@ -165,13 +170,14 @@ let enterNamesStorage = localStorage.getItem("enterNames")? JSON.parse(localStor
 	e.preventDefault();
 	var newUser = {
 		user: enterNameInput.value,
-		score: score
+		score: score,
 	}
+
 	enterNamesStorage.push(newUser);
 	localStorage.setItem("enterNames", JSON.stringify(enterNamesStorage));
 	listBuilder(enterNameInput.value);
 	enterNameInput.value = "";
-
+    document.getElementById("scoreList").style.display = "block";
   }
   );
 
@@ -200,12 +206,7 @@ const deleteenterName = (btn) => {
   
 window.onload = function () {
 
-//         timer = new CountDownTimer(59),
-//         timeObj = CountDownTimer.parse(1);
 
-//     format(timeObj.minutes, timeObj.seconds);
-    
-//   timer.onTick(format); 
     
 	buttonA.addEventListener('click', function (event){
 		answer(event);
@@ -232,4 +233,3 @@ window.onload = function () {
     }
 };
 
-//* Save Session Data *//

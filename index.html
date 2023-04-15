@@ -10,15 +10,23 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <main>
 
+      <header>      
+        
+        <h1>CODE QUIZ</h1>
+      </header>
+
         <div class="topcontainer">
             <div class="timer">Time: <span id="time"></span></div>
                 <div id="topscores">
-                    <a id="scores" title="Click to view scores" href="#" onclick="scoreList()">link text</a>
+                    <a id="scores" title="Click to view scores" href="#" onclick="scoreList()">view scores</a>
                     
 </div>
         
@@ -59,11 +67,11 @@
 <section id="scoreList">
   <h3>Top Scores</h3>
   <ul id="enterNames"></ul>
-  <ul id="#showScore"></ul>
-</section>
+  <ul id="showScore"></ul>
+</section>   
 
  <section id="reload"> 
-<input type="button" value="Reload Page" onClick="window.location.reload(true)">
+<input type="button" class="tryAgain" value="try again" onClick="window.location.reload(true)">
 </section>
 
 </main>
